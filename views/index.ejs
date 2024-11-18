@@ -2,10 +2,362 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/output.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+        <!-- ändra här till output.css för tailwind -->
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p class="text-3xl text-red-500">Welcome to <%= title %></p>
-  </body>
-</html>
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' /> 
+        <!-- ändra här till output.css för tailwind -->
+      </head>
+      <body>
+        <!DOCTYPE html>
+    <html lang="sv">
+      <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous"/>
+        <link rel="stylesheet" href="/main.css"/>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+        <title>Freaky Fashion</title>
+      </head>
+      <body>
+        <header>
+          <div class="mainmenu">
+            <div class="logo">
+              <img src="../../images/Freaky Fashion2.png" alt="logga"/>
+            </div>
+            <div class="menucontainer">
+              <div class="searchbar">
+                <input
+                  class="searchinput"
+                  type="text"
+                  placeholder="Sök produkt"
+                  required/>
+                <ul class="icons">
+                  <li>
+                    <a href="#"><i class="bi bi-heart-fill"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="bi bi-basket"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <nav>
+            <ul class="topmenu">
+              <li><a href="#">Nyheter</a></li>
+              <li><a href="#">Topplista</a></li>
+              <li><a href="#">Rea</a></li>
+              <li><a href="#">Kampanjer</a></li>
+            </ul>
+          </nav>
+        </header>
+        <main>
+          <article class="hero">
+            <img
+              src="../images/herobild.jpg"
+              alt="Hero, bild på ett klädesplagg"
+            />
+            <div>
+                <h1>Lorem ipsum dolor</h1>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero aliquid
+                  voluptatem voluptates perspiciatis, sunt incidunt debitis at natus
+                  possimus alias quaerat libero sed officiis numquam vel iure corporis
+                  ea corrupti!
+                </p>    
+            </div>
+          </article>
+          <div class="spots">
+            <figure>
+              <figcaption>Byxor</figcaption>
+              <a href="#">
+                <img src="../../images/spotbyxor.jpg" alt="bild på produkt"/>
+            </a>
+            </figure>
+            <figure>
+              <figcaption>Halloween</figcaption>
+              <a href="#">
+                <img src="../../images/spothalloween.webp" alt="bild på produkt"/>
+            </a>
+            </figure>
+            <figure>
+              <figcaption>Skor</figcaption>
+              <a href="#">
+                <img src="../../images/spotskort.jpg" alt="bild på produkt"/>
+            </a>
+            </figure>
+          </div>
+          <article class="popularproducts">
+            <% products.forEach(function(product) { %>
+              <div class="productcard">
+                <% if(new Date(product.addedDate).getTime() > new Date().getTime() - 7 * 24 * 60 * 60 * 1000) { %>
+                <div class="badge">Nyhet!</div>
+                <% } %>
+                  <a href="/products/<%= product.slug %>">
+                  <img width="400px" height="520px" src="<%= product.image %>"/>
+                </a>
+                <div class="imgtext">
+                  <h2><%= product.name %></h2>
+                  <h2><%= product.price %></h2>
+                </div>
+                <p><%= product.brand %></p>
+                <a class="heart" href="#"><i class="bi bi-heart-fill"></i></a>
+              </div>
+            <% }); %>
+          </article> 
+    
+          <!-- <article class="populäraprodukter">
+            <div class="productcard">
+              <div class="badge">Nyhet!</div>
+              <a href="../products/details.html">
+                <img width="400px" height="520px" src="../../images/rödsvartrutiglongshirt.webp" alt="Bild på röd/svart rutig lång skjorta"/>
+              </a>
+              <div class="bildtext">
+                <h2>Röd/svart rutig long shirt</h2>
+                <h2>399 SEK</h2>
+              </div>
+              <p>Levis</p>
+              <a class="hjärta" href="#"><i class="bi bi-heart-fill"></i></a>
+            </div>
+            <div class="produktkort">
+              <a href="../products/details.html">
+                <img src="../../images/vinrödspetstopp.jpg" alt="Bild på vinröd spetstopp"/>
+              </a>
+              <div class="bildtext">
+                <h2>Vinröd Spetstopp</h2>
+                <h2>499 SEK</h2>
+              </div>
+              <p>Levis</p>
+              <a class="hjärta" href="#"><i class="bi bi-heart"></i></a>
+            </div>
+            <div class="produktkort">
+              <a href="../products/details.html">
+                <img src="../../images/rocktoppgrå.jpg" alt="Bild på grå rocktopp"/>
+              </a>
+              <div class="bildtext">
+                <h2>Rocktopp, grå</h2>
+                <h2>199 SEK</h2>
+              </div>
+              <p>Levis</p>
+              <a class="hjärta" href="#"><i class="bi bi-heart"></i></a>
+            </div>
+            <div class="produktkort">
+              <a href="../products/details.html">
+                <img src="../../images/inflamestshirt.jpg" alt="Bild på svart t-shirt med In Flames print"/>
+              </a>
+              <div class="bildtext">
+                <h2>In Flames, Svart T-Shirt</h2>
+                <h2>299 SEK</h2>
+              </div>
+              <p>Levis</p>
+              <a class="hjärta" href="#"><i class="bi bi-heart"></i></a>
+            </div>
+            <div class="produktkort">
+              <a href="../products/details.html">
+                <img src="../../images/roseheart.jpg" alt="Bild på svart t-shirt med hjärta av rosor"/>
+              </a>
+              <div class="bildtext">
+                <h2>Bleeding Rose Heart</h2>
+                <h2>299 SEK</h2>
+              </div>
+              <p>Levis</p>
+              <a class="hjärta" href="#"><i class="bi bi-heart"></i></a>
+            </div>
+            <div class="produktkort">
+              <a href="../products/details.html">
+                <img src="../../images/slytherincrest.jpg" alt="Bild på linne med Slytherin logga"/>
+              </a>
+              <div class="bildtext">
+                <h2>Slytherin Crest</h2>
+                <h2>199 SEK</h2>
+              </div>
+              <p>Levis</p>
+              <a class="hjärta" href="#"><i class="bi bi-heart"></i></a>
+            </div>
+            <div class="produktkort">
+              <a href="../products/details.html">
+                <img src="../../images/wolfmoon.jpg" alt="Bild på svart t-shirt med vargmåne"/>
+              </a>
+              <div class="bildtext">
+                <h2>Wolf Moon</h2>
+                <h2>399 SEK</h2>
+              </div>
+              <p>Levis</p>
+              <a class="hjärta" href="#"><i class="bi bi-heart"></i></a>
+            </div>
+            <div class="produktkort">
+              <a href="../products/details.html">
+                <img src="../../images/thecure.webp" alt="Bild på svart t-shirt med the Cure"/>
+              </a>
+              <div class="bildtext">
+                <h2>The Cure, Boys don't cry</h2>
+                <h2>199 SEK</h2>
+              </div>
+              <p>Levis</p>
+              <a class="hjärta" href="#"><i class="bi bi-heart"></i></a>
+            </div>
+          </article> -->
+          <div>
+            <ul class="endicons">
+              <li>
+                <p>
+                  <i class="bi bi-globe-europe-africa"></i>
+                  Gratis frakt och returer
+                </p>
+              </li>
+              <li>
+                <p>
+                  <i class="bi bi-airplane-engines-fill"></i>
+                  Expressfrakt
+                </p>
+              </li>
+              <li>
+                <p>
+                  <i class="bi bi-shield-shaded"></i>
+                  Säkra betalningar
+                </p>
+              </li>
+              <li>
+                <p>
+                  <i class="bi bi-emoji-smile"></i>
+                  Nyheter varje dag
+                </p>
+              </li>
+            </ul>
+          </div>
+        </main>
+        <footer>
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                >
+                  Shopping
+                </button>
+              </h2>
+              <div
+                id="collapseOne"
+                class="accordion-collapse collapse show"
+                aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  <ul class="jacketlist">
+                    <li>Vinterjackor</li>
+                    <li>Pufferjackor</li>
+                    <li>Kappor</li>
+                    <li>Trenchcoats</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="collapseTwo"
+                >
+                  Mina Sidor
+                </button>
+              </h2>
+              <div
+                id="collapseTwo"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingTwo"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
+                  voluptates autem minus, excepturi unde voluptatem dolorum
+                  assumenda nemo doloribus inventore consectetur ipsum consequatur
+                  at blanditiis vitae nam totam illo est!
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseThree"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                >
+                  Kundtjänst
+                </button>
+              </h2>
+              <div
+                id="collapseThree"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingThree"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Reprehenderit ad nam dolorem repellendus, quod voluptas laborum! A
+                  nesciunt provident, nemo quod porro dolor laborum recusandae quas
+                  ad facilis ducimus assumenda.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="copyright">
+            <p>
+              <i class="bi bi-c-circle"></i>
+              Freaky Fashion
+            </p>
+          </div>
+          <nav class="endmenu">
+            <ul>
+              <li>Shopping</li>
+              <li>Vinterjackor</li>
+              <li>Pufferjackor</li>
+              <li>Kappa</li>
+              <li>Trenchcoats</li>
+            </ul>
+            <ul>
+              <li>Mina Sidor</li>
+              <li>Mina Ordrar</li>
+              <li>Mitt Konto</li>
+            </ul>
+            <ul>
+              <li>Kundtjänst</li>
+              <li>Returpolicy</li>
+              <li>Integritetspolicy</li>
+            </ul>
+            <div class="copyright2">
+              <p>
+                <i class="bi bi-c-circle"></i>
+                Freaky Fashion
+              </p>
+            </div>
+          </nav>
+        </footer>
+      </body>
+    </html>
+      </body>
+    </html>
+    
