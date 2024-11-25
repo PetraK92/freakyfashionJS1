@@ -18,45 +18,79 @@
         <aside class="sidebar">
           <h4>Produkter</h4>
         </aside>
-        <form class="maincontent">
+        <form id="newProductForm" class="maincontent">
           <h3>Ny produkt</h3>
           <label>Namn</label>
-            <input
+            <input 
+              name="name"
               class="sökbox"
               type="text"
               placeholder="Produkt namn"
               required/>
             <label>Beskrivning</label>
-            <textarea required></textarea>
+            <textarea 
+            name="description"
+            required></textarea>
             <label>Bild</label>
-            <input type="file" required/>
+            <input type="text" 
+            name="image"
+            required/>
+            <label>Märke</label>
+            <input type="text" 
+            name="brand"
+            required>
             <label>SKU</label>
-            <input type="text" required/>
+            <input type="text" 
+            name="sku"
+            required/>
             <label>Pris</label>
-            <input type="number" required/>
-            <label>Kategorier</label>
-          <div class="categories">
-            <div>
-              <input type="checkbox" name="T-Shirt"/>
-              <label for="T-Shirt">T-Shirt</label>  
-            </div>
-            <div>
-              <input type="checkbox" name="Sommar"/>
-              <label for="Sommar">Sommar</label>  
-            </div>
-            <div>
-              <input type="checkbox" name="Byxor"/>
-              <label for="Byxor">Byxor</label>  
-            </div>
-            <div>
-              <input type="checkbox" name="Skor"/>
-              <label for="Skor">Skor</label>  
-            </div>
-          </div>
+            <input type="number" 
+            name="price"
+            required/>
             <input type="submit" value="Lägg till">
           </div>
         </form>
       </div>
     </main>
+    <script>
+              const newProductForm = document.getElementById("newProductForm");
+              newProductForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                console.log(e);
+                const formData = new FormData(newProductForm);
+                const name = formData.get("name")
+                const description = formData.get("description")
+                const image = formData.get("image")
+                const brand = formData.get("brand")
+                const sku = formData.get("sku")
+                const price = formData.get("price")
+          
+                const body= {
+                    name,
+                    description,
+                    image,
+                    brand,
+                    sku,
+                    price,
+                  };
+                  async function postData() {
+                    try {
+                   await fetch("http://localhost:3000/admin/products/addProduct", {
+                  method: "POST",
+                  body: JSON.stringify(body),
+                  headers: {
+                    "Content-Type": "application/json"
+                    }
+                })
+                window.location.href="/admin/products"
+                  }catch(error){
+                    console.log(error);
+                  }
+
+                  }
+                  postData();
+                });
+
+    </script>
   </body>
 </html>

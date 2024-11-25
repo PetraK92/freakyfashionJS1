@@ -3,17 +3,22 @@
 @tailwind utilities; */
 
 body {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 header {
-    display: flex;
-    flex-direction: column;
-    background-color: darkgray;
-    padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: darkgray;
+  padding-bottom: 10px;
 }
 
 .menucontainer {
   display: flex;
+}
+
+td {
+  min-height: 2rem;
+  padding: 10px;
 }
 
 .logo {
@@ -97,7 +102,6 @@ header {
   font-size: 2em;
   text-align: center;
   color: white;
-
 }
 
 .popularproducts {
@@ -112,12 +116,23 @@ header {
   position: relative;
   width: 100%;
 }
-.productcard img {
+.productcardMain img {
   width: 100%;
   height: 80vw;
   max-height: 520px;
   object-fit: contain;
 }
+.popularproducts .productcard img {
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+}
+.similarproducts .productcard img {
+  width: 100%;
+  max-height: 250px;
+  object-fit: contain;
+}
+
 .imgtext {
   display: flex;
   justify-content: space-between;
@@ -275,9 +290,19 @@ header {
     grid-template-columns: 1fr 1fr;
     justify-content: space-evenly;
   }
-  .productcard img {
+  .productcardMain img {
     height: 50vw;
-  }  
+  }
+.popularproducts .productcard img {
+  max-height: 920px;
+  object-fit: contain;
+}
+.similarproducts .productcard img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+}
+
   .imgtext h2 {
     font-size: 16px;
   }
@@ -381,10 +406,20 @@ header {
   .popularproducts {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
-  .productcard img {
-    height: 25vw;
-  }  
+  .productcardMain img {
+    height: 20vw;
+  }
 
+  .popularproducts .productcard img {
+    max-height: 920px;
+    object-fit: contain;
+  }
+  .similarproducts .productcard img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: contain;
+  }
+  
   .heart {
     position: absolute;
     bottom: 60px;
@@ -502,6 +537,7 @@ header {
 .newproduct {
   float: right;
   padding: 5px;
+  margin-left: 10px;
   border: 1px solid black;
   color: black;
   font-size: 16px;
