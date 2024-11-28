@@ -120,10 +120,7 @@
             </div>
             <p><%= product.brand %></p>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
-              consequuntur culpa voluptatem in ipsa eum eos eveniet magni
-              consequatur optio quisquam quam ad, voluptatibus similique
-              accusantium nihil cum minus! Delectus?
+              <%= product.description %>
             </p>
             <p><%= product.price %> SEK</p>
             <button class="addtocart">Lägg i varukorgen</button>
@@ -137,7 +134,7 @@
         <% similarProducts.forEach(function(product) { %>
           <div class="productcard">
             <a href="/products/<%= product.slug %>">
-              <img width="400px" height="520px" src="<%= product.image %>" alt="Bild på <%= product.name %>"/>
+              <img src="<%= product.image %>" alt="Bild på <%= product.name %>"/>
             </a>
             <div class="imgtext">
               <h2><%= product.name %></h2>

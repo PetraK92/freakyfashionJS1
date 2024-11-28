@@ -26,12 +26,6 @@ function getSimilarProducts(products, currentProductId) {
    return similarProducts;
  }
 
-//chatgpt
-// function getRandomProducts(products, count) {
-//   const shuffled = [...products].sort(() => 0.5 - Math.random()); // Slumpa ordningen
-//   return shuffled.slice(0, count); // Returnera önskat antal produkter
-// }
-
 /* GET product page. */
 router.get("/:slug", function (req, res, next) {
   const slug = req.params.slug;
@@ -45,7 +39,8 @@ router.get("/:slug", function (req, res, next) {
           brand,
           image,
           addedDate,
-          slug
+          slug,
+          description
       FROM products
   `);
 
@@ -58,14 +53,11 @@ router.get("/:slug", function (req, res, next) {
     }
 
     const similarProducts = getSimilarProducts(rows, product.id);
-    // const randomProducts = getRandomProducts(rows, 3); //chatgpt
-    // console.log(similarProducts);
 
     res.render("details", {
       title: product.name,
       product,
       similarProducts,
-      // randomProducts
     });
   } catch (error) {
     console.error("Error fetching products:", error.message);

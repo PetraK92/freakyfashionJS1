@@ -5,19 +5,6 @@ const db = require("../db/db");
 
 /* GET home page. */
 router.post("/", function (req, res, next) {
-  //     const select = db.prepare(`
-  //         SELECT
-  //             id,
-  //             name,
-  //             price,
-  //             brand,
-  //             image,
-  //             addedDate,
-  //             slug
-  //         FROM products
-  //     `);
-  // const products = select.all();
-  // res.json( products );
  
   
   
@@ -43,7 +30,7 @@ console.log(name, price, brand, image, sku, description);
         image,
         sku,
         description,
-        addedDate: new Date().toISOString(),
+        addedDate: new Date().toISOString().split("T")[0],
         slug
       }
       console.log(newProduct)

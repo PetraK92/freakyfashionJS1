@@ -83,6 +83,13 @@
             </a>
             </figure>
           </div>
+          <% 
+  // Sortera produkterna baserat på 'addedDate' i fallande ordning
+  products.sort(function(a, b) {
+    return new Date(b.addedDate) - new Date(a.addedDate);
+  });
+%>
+<!-- TODO: fixa de nya produktbilderna så dom blir samma stl -->
           <article class="popularproducts">
             <% products.forEach(function(product) { %>
               <div class="productcardMain">
@@ -98,6 +105,7 @@
                 </div>
                 <p><%= product.brand %></p>
                 <a class="heart" href="#"><i class="bi bi-heart-fill"></i></a>
+                <a class="heart2" href="#"><i class="bi bi-heart"></i></a>
               </div>
             <% }); %>
           </article> 
