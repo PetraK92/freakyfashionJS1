@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="sv">
   <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"/>
-    <link rel="stylesheet" href="/stylesheets/style.css"/>
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
-    <!-- <title>Svart T-shirt</title> -->
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
     <title><%= product.name %></title>
   </head>
   <body>
@@ -20,7 +21,7 @@
       <div class="mainmenu">
         <div class="logo">
           <a href="/">
-          <img src="../../images/Freaky Fashion2.png" alt="logga"/>
+            <img src="../../images/Freaky Fashion2.png" alt="logga" />
           </a>
         </div>
         <div class="menucontainer">
@@ -29,7 +30,8 @@
               class="searchinput"
               type="text"
               placeholder="Sök produkt"
-              required/>
+              required
+            />
             <ul class="icons">
               <li>
                 <a href="#"><i class="bi bi-heart-fill"></i></a>
@@ -54,17 +56,15 @@
       <article class="popularproducts">
         <div class="productcard tshirtpage">
           <a href="#">
-            <img src="<%= product.image %>" alt="Bild på <%= product.name %>"/>
+            <img height="400" src="<%= product.image %>" alt="Bild på <%= product.name %>" />
           </a>
-          <a class="heart2" href="#"><i class="bi bi-heart"></i></a>
+          <a class="heart3" href="#"><i class="bi bi-heart"></i></a>
           <div>
             <div class="imgtext">
               <h2><%= product.name %></h2>
             </div>
             <p><%= product.brand %></p>
-            <p>
-              <%= product.description %>
-            </p>
+            <p><%= product.description %></p>
             <p><%= product.price %> SEK</p>
             <button class="addtocart">Lägg i varukorgen</button>
           </div>
@@ -75,16 +75,16 @@
       </div>
       <div class="similarproducts">
         <% similarProducts.forEach(function(product) { %>
-          <div class="productcard">
-            <a href="/products/<%= product.slug %>">
-              <img src="<%= product.image %>" alt="Bild på <%= product.name %>"/>
-            </a>
-            <div class="imgtext">
-              <h2><%= product.name %></h2>
-              <h2><%= product.price %> SEK</h2>
-            </div>
-            <p><%= product.brand %></p>
+        <div class="productcard">
+          <a href="/products/<%= product.slug %>">
+            <img src="<%= product.image %>" alt="Bild på <%= product.name %>" />
+          </a>
+          <div class="imgtext">
+            <h2><%= product.name %></h2>
+            <h2><%= product.price %> SEK</h2>
           </div>
+          <p><%= product.brand %></p>
+        </div>
         <% }); %>
       </div>
       <div>

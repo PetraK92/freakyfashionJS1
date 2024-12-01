@@ -3,15 +3,9 @@ var router = express.Router();
 
 const db = require("../db/db");
 
-/* GET home page. */
 router.post("/", function (req, res, next) {
- 
-  
-  
-// TODO lägga till addProductsroutern i app.js
-// TODO testa att routern fungerar 
-const { name, price, brand, image, sku, description } = req.body;
-console.log(name, price, brand, image, sku, description);
+  const { name, price, brand, image, sku, description } = req.body;
+
   if (!name || !price || !brand || !image || !sku || !description) {
     res.status(400).json({ message: "Please fill in all fields" });
   }
@@ -22,21 +16,20 @@ console.log(name, price, brand, image, sku, description);
       .replace(" ", "-")
       .replace("/", "")
       .replace(",", "");
-      console.log("slug" , slug);
-      const newProduct={
-        name,
-        price,
-        brand,
-        image,
-        sku,
-        description,
-        addedDate: new Date().toISOString().split("T")[0],
-        slug
-      }
-      console.log(newProduct)
-    const insert =
-      db.prepare(
-        `INSERT INTO products (
+
+    const newProduct = {
+      name,
+      price,
+      brand,
+      image,
+      sku,
+      description,
+      addedDate: new Date().toISOString().split("T")[0], 
+      slug,
+    };
+
+    const insert = db.prepare(
+      `INSERT INTO products (
         name, 
         price, 
         brand, 
@@ -54,8 +47,9 @@ console.log(name, price, brand, image, sku, description);
         @description, 
         @addedDate, 
         @slug)
-        `);
-        console.log("insert" , insert);
+        `
+    );
+    
     insert.run(newProduct);
     res.status(201).end();
   } catch (error) {

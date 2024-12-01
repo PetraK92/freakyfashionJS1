@@ -1,9 +1,9 @@
 var express = require("express");
 var router = express.Router();
 
-/* GET home page. */
+/* GET new product form page. */
 router.get("/", function (req, res, next) {
-  res.render("new", { title: "Express" });
+  res.render("new", { title: "new product" });
 });
 
 module.exports = router;

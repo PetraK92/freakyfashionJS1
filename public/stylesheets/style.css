@@ -1,6 +1,3 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
 
 body {
   overflow-x: hidden;
@@ -116,12 +113,17 @@ td {
   position: relative;
   width: 100%;
 }
+.productcardMain {
+  width: 100%;
+  object-fit: contain;
+}
 .productcardMain img {
   width: 100%;
   height: 80vw;
   max-height: 520px;
   object-fit: contain;
 }
+
 .popularproducts .productcard img {
   width: 100%;
   max-height: 520px;
@@ -169,11 +171,23 @@ td {
   font-size: 1.5em;
   color: black;
 }
+.heart3 {
+  position: absolute;
+  bottom: 140px;
+  right: 15px;
+  font-size: 1.5em;
+  color: black;
+}
+
 .heart:hover {
   animation: expand 1s ease-in-out;
   color: darkred;
 }
 .heart2:hover {
+  animation: expand 1s ease-in-out;
+  color: darkred;
+}
+.heart3:hover {
   animation: expand 1s ease-in-out;
   color: darkred;
 }
@@ -346,14 +360,17 @@ td {
   .heart2 {
     display: none;
   }
-  
+  .heart3 {
+    display: none;
+  }
+
   .tshirtpage {
     display: flex;
     width: 100vw;
     gap: 20px;
   }
   .tshirtpage p {
-    max-width: 50%;
+    max-width: 20rem;
   }
   .tshirtpage h2 {
     padding-top: 20px;
@@ -439,11 +456,11 @@ td {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
   .productcardMain img {
-    height: 20vw;
+    height: 30vw;
   }
 
   .popularproducts .productcard img {
-    max-height: 920px;
+    max-height: 520px;
     object-fit: contain;
   }
   .similarproducts .productcard img {

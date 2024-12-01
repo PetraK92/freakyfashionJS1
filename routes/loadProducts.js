@@ -3,10 +3,9 @@ var router = express.Router();
 
 const db = require("../db/db");
 
-  
-/* GET home page. */
+/* GET all products. Retunerar json */
 router.get("/", function (req, res, next) {
-    const select = db.prepare(`
+  const select = db.prepare(`
         SELECT 
             id,
             name,
@@ -17,10 +16,9 @@ router.get("/", function (req, res, next) {
             slug,
             sku
         FROM products
-    `);    
-const products = select.all();
-res.json( products );
-
+    `);
+  const products = select.all();
+  res.json(products);
 });
 
 module.exports = router;
